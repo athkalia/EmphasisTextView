@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.topantidevelopers</groupId>
+    <artifactId>emphasistextview</artifactId>
+    <version>1.0</version>
+    <packaging>aar</packaging>
+
+    <name>EmphasisTextView</name>
+
+    <properties>
+        <!--GENERAL PROPERTIES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdk.version.android>1.6</jdk.version.android>
+        <android.maven.plugin.configuration.platform>23</android.maven.plugin.configuration.platform>
+        <!--DEPENDENCIES VERSIONS- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <android.version>5.1.1_r2</android.version>
+        <!--PLUGIN VERSIONS- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <android.maven.plugin.version>4.2.1</android.maven.plugin.version>
+        <maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
+    </properties>
+
+        <dependencies>
+            <!--ANDROID DEPENDENCIES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+            <dependency>
+                <groupId>android</groupId>
+                <artifactId>android</artifactId>
+                <version>${android.version}</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+
+    <build>
+            <plugins>
+                <plugin>
+                    <groupId>com.simpligility.maven.plugins</groupId>
+                    <artifactId>android-maven-plugin</artifactId>
+                    <version>${android.maven.plugin.version}</version>
+                    <extensions>true</extensions>
+                    <!--we need to bind the manifest-update goal so that it can perform the versionName and versionCode related tasks-->
+                    <executions>
+                        <execution>
+                            <id>test</id>
+                            <goals>
+                                <goal>manifest-update</goal>
+                            </goals>
+                            <phase>process-resources</phase>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <!--update versionCode from project version. See http://www.simpligility.com/2010/11/release-version-management-for-your-android-application-->
+                        <manifestVersionCodeUpdateFromVersion>true</manifestVersionCodeUpdateFromVersion>
+                        <manifestVersionName>${project.version}</manifestVersionName>
+                        <androidManifestFile>${basedir}/AndroidManifest.xml</androidManifestFile>
+                        <resourceDirectory>${basedir}/res</resourceDirectory>
+                        <assetsDirectory>${basedir}/assets</assetsDirectory>
+                        <sdk>
+                            <platform>${android.maven.plugin.configuration.platform}</platform>
+                        </sdk>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.plugin.version}</version>
+                    <configuration>
+                        <source>${jdk.version.android}</source>
+                        <target>${jdk.version.android}</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+    </build>
+
+</project>
