@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE suppressions PUBLIC
+        "-//Puppy Crawl//DTD Suppressions 1.0//EN"
+        "http://www.puppycrawl.com/dtds/suppressions_1_0.dtd">
+
+<!--In this file we suppress certain rules for specific parts of the code-->
+<suppressions>
+
+    <!--Rule disabled for tests with this regular expression-->
+    <suppress checks="MagicNumber" files="[/\\]src[/\\]test[/\\]java[/\\]"/>
+
+    <!--Rule disabled for tests with this regular expression-->
+    <suppress checks="MultipleStringLiterals" files="[/\\]src[/\\]test[/\\]java[/\\]"/>
+
+    <!--Rule disabled for tests with this regular expression-->
+    <suppress checks="ClassDataAbstractionCoupling" files="[/\\]src[/\\]test[/\\]java[/\\]"/>
+
+</suppressions>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.topantidevelopers.emphasis</groupId>
+        <artifactId>parent</artifactId>
+        <version>0.2</version>
+    </parent>
+
+    <artifactId>demo-app</artifactId>
+    <packaging>apk</packaging>
+
+    <name>EmphasisTextView - Sample Project</name>
+
+    <properties>
+        <!--This property allows us to reference the top directory from submodules.-->
+        <main.basedir>${project.parent.basedir}</main.basedir>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdk.version.android>1.6</jdk.version.android>
+        <play-store.dir>play-store</play-store.dir>
+    </properties>
+
+    <dependencies>
+        <!--ANDROID DEPENDENCIES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <dependency>
+            <groupId>android</groupId>
+            <artifactId>android</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!--OTHER DEPENDENCIES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.androidannotations</groupId>
+            <artifactId>androidannotations</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.androidannotations</groupId>
+            <artifactId>androidannotations-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.topantidevelopers.emphasis</groupId>
+            <artifactId>library</artifactId>
+            <type>aar</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
