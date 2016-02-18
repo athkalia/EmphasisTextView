@@ -1,31 +1,51 @@
 # EmphasisTextView
+[![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0) [![Platform](https://img.shields.io/badge/platform-android-green.svg)](http://developer.android.com/index.html)
 An android TextView that supports highlighting parts or all of the text contained in it.
 
-This library is hosted in https://bintray.com/bintray/jcenter
+Screenshots           
+===========
+![Demo Screenshot][1]
 
-For gradle, you can import it with:
-
-    dependencies {
-        compile 'com.topantidevelopers.emphasis:library:0.2'
-    }
-
-For maven, you can import it with: 
-
-       <dependency>
-            <groupId>com.topantidevelopers.emphasis</groupId>
-            <artifactId>library</artifactId>
-            <type>aar</type>
-            <version>0.2</version>
-       </dependency>
-
+How to
+======
 
 To set the highlight areas you can add the following statements programmatically:
 
     emphasisTextView.setText("SALAD");
     emphasisTextView.setTextToHighlight("sa");
-    emphasisTextView.setHighlightColor("#ff3393b4");
+    emphasisTextView.setHighlightColor("#ff3393b4"); 
     emphasisTextView.setCaseInsensitive(true);
     emphasisTextView.highlight();
 
 Please check the sample project for some more working examples.
+
+Add it to your project
+----------------------
+
+This library is hosted in [jcenter](https://bintray.com/bintray/jcenter) 
+
+For gradle, you can import it with:
+
+    dependencies {
+        compile 'com.athkalia.emphasis:emphasis:0.3'
+    }
+
+For maven, you can import it with: 
+
+       <dependency>
+            <groupId>com.athkalia.emphasis</groupId>
+            <artifactId>emphasis</artifactId>
+            <type>aar</type>
+            <version>0.3</version>
+       </dependency>
+
+Todos
+-----
+Feel free to open a pull request for anything that you want to see added.
  
+What I have in mind:
+
+1) Introduce a delegate when someone is using another class that is already extending from TextView (possibly another library).
+2) Create similar functionality via xml attributes.
+       
+ [1]: ./art/screenshot.png

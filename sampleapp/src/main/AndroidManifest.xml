@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<manifest package="com.athkalia.emphasis.sample"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- APPLICATION SPECIFIC SECTION ********************************************************************************************************************** -->
+
+    <application android:allowBackup="true"
+        android:icon="@drawable/launcher_icon"
+        android:label="@string/app_name">
+
+        <!-- ACTIVITIES ************************************************************************************************************************************ -->
+
+        <!-- Launcher Activity -->
+        <activity android:name="com.athkalia.emphasis.activities.MainActivity_">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>

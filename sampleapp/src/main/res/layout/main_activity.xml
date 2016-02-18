@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.athkalia.emphasis.EmphasisTextView
+        android:id="@+id/main_activity_first_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:textSize="30sp" />
+
+    <com.athkalia.emphasis.EmphasisTextView
+        android:id="@+id/main_activity_second_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:textSize="30sp" />
+
+    <com.athkalia.emphasis.EmphasisTextView
+        android:id="@+id/main_activity_third_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:textSize="30sp" />
+
+    <com.athkalia.emphasis.EmphasisTextView
+        android:id="@+id/main_activity_fourth_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:textSize="30sp" />
+
+    <com.athkalia.emphasis.EmphasisTextView
+        android:id="@+id/main_activity_fifth_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:textSize="30sp" />
+
+</LinearLayout>

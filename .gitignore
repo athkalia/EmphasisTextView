@@ -1,0 +1,11 @@
+#Ignore gradle build files
+/build/
+
+#Ignore gradle generated files
+/.gradle/
+
+#Ignore all intelliJ files
+/.idea/
+
+#Ignore file that contains jcenter credentials
+local.properties
