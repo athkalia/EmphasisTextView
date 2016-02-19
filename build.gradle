@@ -4,4 +4,7 @@ allprojects {
         jcenter()
     }
 
+    group 'com.athkalia.emphasis'
+    version '0.3'
+
 }

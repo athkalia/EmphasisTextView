@@ -10,30 +10,8 @@ buildscript {
 }
 
 apply plugin: 'com.android.library'
-
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'emphasis'
-
-    publishedGroupId = 'com.athkalia.emphasis'
-    libraryName = 'emphasis'
-    artifact = 'emphasis'
-
-    libraryDescription = 'An android TextView that supports highlighting parts or all of the text contained in it.'
-
-    siteUrl = 'https://github.com/athkalia/EmphasisTextView'
-    gitUrl = 'https://github.com/athkalia/EmphasisTextView.git'
-
-    libraryVersion = '0.3'
-
-    developerId = 'athkalia'
-    developerName = 'Sakis Kaliakoudas'
-    developerEmail = 'sakis.kaliakoudas@hotmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion 23
@@ -44,10 +22,61 @@ android {
     }
 }
 
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            artifact javadocJar
+            artifact sourcesJar
+            artifact file('build/outputs/aar/library-release.aar')
+            groupId group
+            artifactId 'emphasis'
+            version version
+        }
+    }
+}
+
+// Bintray
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    publications = ['MyPublication']
+
+    pkg {
+        repo = 'maven'
+        name = 'emphasis'
+        licenses = ["Apache-2.0"]
+        vcsUrl = 'https://github.com/athkalia/EmphasisTextView.git'
+        desc = 'An android TextView that supports highlighting parts or all of the text contained in it.'
+        websiteUrl = 'https://github.com/athkalia/EmphasisTextView'
+        publicDownloadNumbers = true
+        publish = true
+        dryRun = false  //Whether to run this as dry-run, without deploying
+        version {
+            name = version
+        }
+    }
+}
+
 dependencies {
     testCompile 'junit:junit:4.12'
     testCompile 'org.robolectric:robolectric:3.0'
 }
-
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
