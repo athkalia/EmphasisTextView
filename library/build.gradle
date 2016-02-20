@@ -45,7 +45,7 @@ publishing {
             artifact file('build/outputs/aar/library-release.aar')
             groupId group
             artifactId 'emphasis'
-            version version
+            version '0.3'
         }
     }
 }
@@ -71,7 +71,7 @@ bintray {
         publish = true
         dryRun = false  //Whether to run this as dry-run, without deploying
         version {
-            name = version
+            name = '0.3'
         }
     }
 }
