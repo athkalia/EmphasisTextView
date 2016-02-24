@@ -1,5 +1,6 @@
 # EmphasisTextView
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0) [![Platform](https://img.shields.io/badge/platform-android-green.svg)](http://developer.android.com/index.html)
+
 An android TextView that supports highlighting parts or all of the text contained in it.
 
 Screenshots           
@@ -45,7 +46,9 @@ Feel free to open a pull request for anything that you want to see added.
  
 What I have in mind:
 
+
 1) Introduce a delegate when someone is using another class that is already extending from TextView (possibly another library).
+
 2) Create similar functionality via xml attributes.
        
  [1]: ./art/screenshot.png
