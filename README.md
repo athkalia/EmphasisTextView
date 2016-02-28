@@ -1,5 +1,6 @@
 # EmphasisTextView
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0) [![Platform](https://img.shields.io/badge/platform-android-green.svg)](http://developer.android.com/index.html)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-EmphasisTextView-green.svg?style=true)](https://android-arsenal.com/details/1/3203)
 
 An android TextView that supports highlighting parts or all of the text contained in it.
 
