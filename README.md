@@ -10,13 +10,13 @@ How to
 ======
 
 To set the highlight areas you can add the following statements programmatically:
-
-    emphasisTextView.setText("SALAD");
-    emphasisTextView.setTextToHighlight("sa");
-    emphasisTextView.setHighlightColor("#ff3393b4"); 
-    emphasisTextView.setCaseInsensitive(true);
-    emphasisTextView.highlight();
-
+```java
+emphasisTextView.setText("SALAD");
+emphasisTextView.setTextToHighlight("sa");
+emphasisTextView.setHighlightColor("#ff3393b4"); 
+emphasisTextView.setCaseInsensitive(true);
+emphasisTextView.highlight();
+```
 Please check the sample project for some more working examples.
 
 Add it to your project
@@ -25,27 +25,29 @@ Add it to your project
 This library is hosted in [jcenter](https://bintray.com/bintray/jcenter) 
 
 For gradle, you can import it with:
-
-    dependencies {
-        compile 'com.athkalia.emphasis:emphasis:0.4'
-    }
-
+```groovy
+dependencies {
+    compile 'com.athkalia.emphasis:emphasis:0.4'
+}
+```
 For maven, you can import it with: 
-
-       <dependency>
-            <groupId>com.athkalia.emphasis</groupId>
-            <artifactId>emphasis</artifactId>
-            <type>aar</type>
-            <version>0.4</version>
-       </dependency>
-
+```xml
+<dependency>
+    <groupId>com.athkalia.emphasis</groupId>
+    <artifactId>emphasis</artifactId>
+    <type>aar</type>
+    <version>0.4</version>
+</dependency>
+```
 Todos
 -----
 Feel free to open a pull request for anything that you want to see added.
  
 What I have in mind:
 
+
 1) Introduce a delegate when someone is using another class that is already extending from TextView (possibly another library).
+
 2) Create similar functionality via xml attributes.
        
  [1]: ./art/screenshot.png
