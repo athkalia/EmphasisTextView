@@ -6,13 +6,15 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.BackgroundColorSpan;
+import android.text.style.CharacterStyle;
+import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class EmphasisTextView extends TextView {
+public class EmphasisTextView extends TextView implements Emphasis {
 
     private int highlightColor;
 
@@ -20,58 +22,56 @@ public class EmphasisTextView extends TextView {
 
     private boolean caseInsensitive;
 
-    public EmphasisTextView(final Context context) {
+    private HighlightMode highlightMode = HighlightMode.BACKGROUND;
+
+    public EmphasisTextView(Context context) {
+
         super(context);
     }
 
-    public EmphasisTextView(final Context context, final AttributeSet attrs) {
+    public EmphasisTextView(Context context, AttributeSet attrs) {
+
         super(context, attrs);
     }
 
-    public EmphasisTextView(final Context context, final AttributeSet attrs, final int defStyleAttr) {
+    public EmphasisTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+
         super(context, attrs, defStyleAttr);
     }
 
-    /**
-     * Set the color that you want to highlight your text with. This accepts a Hex String starting
-     * with '#' and then 2 values for transparency, 2 for Red color, 2 for Green color and 2 for Blue.
-     *
-     * Example: '#FF00FF00' for Green, or '#FF000000' for black.
-     */
+    @Override
     public void setTextHighlightColor(String highlightColorHex) {
+
         this.highlightColor = Color.parseColor(highlightColorHex);
     }
 
-    /**
-     * Set the color that you want to highlight your text with. This accepts a color resource id.
-     *
-     * Example: 'android.R.color.black'
-     */
+    @Override
     public void setTextHighlightColor(int colorResource) {
+
         this.highlightColor = getResources().getColor(colorResource);
     }
 
-    /**
-     * Set the text that should be searched for and highlighted in the TextView.
-     */
-    public void setTextToHighlight(final String textToHighlight) {
+    @Override
+    public void setHighlightMode(HighlightMode highlightMode) {
+
+        this.highlightMode = highlightMode;
+    }
+
+    @Override
+    public void setTextToHighlight(String textToHighlight) {
+
         this.textToHighlight = textToHighlight;
     }
 
-    /**
-     * Enable or disable case sensitivity while looking for Strings to highlight.
-     */
+    @Override
     public void setCaseInsensitive(boolean caseInsensitive) {
+
         this.caseInsensitive = caseInsensitive;
     }
 
-    /**
-     * Run the highlighting operation. Searches through the text that is set in the TextView via
-     * {@link TextView#setText(CharSequence)} for occurrences of the text the text that needs to be
-     * highlighted (that is declared via  {@link #setTextToHighlight(String)} and then highlights it
-     * with the color defined in {@link #setTextHighlightColor(int)} or {@link #setTextHighlightColor(String)}.
-     */
+    @Override
     public void highlight() {
+
         if (textToHighlight == null) {
             throw new IllegalStateException("You must specify a text to highlight before using executing the highlight operation.");
         }
@@ -80,18 +80,23 @@ public class EmphasisTextView extends TextView {
         }
 
         if (!TextUtils.isEmpty(getText()) && !textToHighlight.isEmpty()) {
-            final String text = getText().toString();
-            final Spannable spannableString = new SpannableString(text);
-            final Pattern pattern;
+            String text = getText().toString();
+            Spannable spannableString = new SpannableString(text);
+            Pattern pattern;
             if (caseInsensitive) {
                 pattern = Pattern.compile(Pattern.quote(textToHighlight), Pattern.CASE_INSENSITIVE);
             } else {
                 pattern = Pattern.compile(Pattern.quote(textToHighlight));
             }
-            final Matcher matcher = pattern.matcher(text);
+            Matcher matcher = pattern.matcher(text);
             while (matcher.find()) {
-                final BackgroundColorSpan colorSpan = new BackgroundColorSpan(highlightColor);
-                spannableString.setSpan(colorSpan, matcher.start(), matcher.end(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                CharacterStyle characterStyle;
+                if (highlightMode == HighlightMode.BACKGROUND) {
+                    characterStyle = new BackgroundColorSpan(highlightColor);
+                } else {
+                    characterStyle = new ForegroundColorSpan(highlightColor);
+                }
+                spannableString.setSpan(characterStyle, matcher.start(), matcher.end(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
             setText(spannableString);
         }

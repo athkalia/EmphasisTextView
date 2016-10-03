@@ -27,7 +27,7 @@ This library is hosted in [jcenter](https://bintray.com/bintray/jcenter)
 For gradle, you can import it with:
 
     dependencies {
-        compile 'com.athkalia.emphasis:emphasis:0.3'
+        compile 'com.athkalia.emphasis:emphasis:0.4'
     }
 
 For maven, you can import it with: 
@@ -36,7 +36,7 @@ For maven, you can import it with:
             <groupId>com.athkalia.emphasis</groupId>
             <artifactId>emphasis</artifactId>
             <type>aar</type>
-            <version>0.3</version>
+            <version>0.4</version>
        </dependency>
 
 Todos

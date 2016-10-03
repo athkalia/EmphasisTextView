@@ -9,3 +9,6 @@
 
 #Ignore file that contains jcenter credentials
 local.properties
+
+#Ignore all idea iml files
+*.iml
